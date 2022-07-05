@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Custom CSS -->
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <!-- Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/6b7d429c30.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Todo</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <div class="row w-50"> -->
+      <div class="wrapper" id="appToDo">
+        <div class="todo-hedaer d-md-flex justify-content-center mt-5">
+          <input v-model="userInput" type="text" class="w-100" />
+          <button v-on:click="addTodo" class="btn btn-primary w-100 ms-2">
+            Add to the list
+          </button>
+        </div>
+        <div class="list-wrapper mt-3">
+          <ul class="list-group">
+            <li class="list-group-item" v-for="list in todos">
+              <input type="checkbox" name="" id="" class="me-1" /> {{list}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            todos: [],
+            userInput: "",
+          };
+        },
+
+        methods: {
+          addTodo() {
+            if (this.userInput != "") {
+              this.todos.push(this.userInput);
+              this.userInput = "";
+            } else {
+              alert("Please write someting");
+            }
+          },
+        },
+      }).mount("#appToDo");
+    </script>
+  </body>
+</html>
